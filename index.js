@@ -29,11 +29,11 @@ const tryServer = opts => new Promise(resolve => {
 });
 
 const findPort = options => new Promise((resolve, reject) => {
-  const {start, end, host, debug} = options;
+  const {start, end, host, exclude, debug} = options;
   let ports = [];
 
   if (debug) {
-    console.log(`openporthost - {start: ${start}, end: ${end}, host: ${host}}`);
+    console.log(`openporthost - {start: ${start}, end: ${end}, host: ${host}}, exclude: ${exclude}`);
   }
 
   const fire = () => new Promise((resolve, reject) => {
@@ -58,6 +58,8 @@ const findPort = options => new Promise((resolve, reject) => {
 
   let n = start;
   while (n < end + 1) {
+    if(exclude.includes(n)
+       continue;
     ports.push(n);
     n += 1;
   }
