@@ -58,9 +58,8 @@ const findPort = options => new Promise((resolve, reject) => {
 
   let n = start;
   while (n < end + 1) {
-    if(exclude.includes(n))
-       continue;
-    ports.push(n);
+    if(!exclude.includes(n))
+       ports.push(n);
     n += 1;
   }
 
